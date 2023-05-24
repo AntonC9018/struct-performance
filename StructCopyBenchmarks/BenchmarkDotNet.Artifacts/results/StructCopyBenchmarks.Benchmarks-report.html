@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>StructCopyBenchmarks.Benchmarks-20230524-222538</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.13.5, OS=Windows 10 (10.0.19044.2728/21H2/November2021Update)
+11th Gen Intel Core i7-1165G7 2.80GHz, 1 CPU, 8 logical and 4 physical cores
+.NET SDK=7.0.302
+  [Host]     : .NET 7.0.5 (7.0.523.17405), X64 RyuJIT AVX2
+  Job-BDDEHZ : .NET 7.0.5 (7.0.523.17405), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>IterationTime=25.0000 ms  
+</code></pre>
+
+<table>
+<thead><tr><th>  Method</th><th>N</th><th>    Mean</th><th>Error</th><th>StdDev</th><th>  Median</th>
+</tr>
+</thead><tbody><tr><td>S8_Ref</td><td>1</td><td>1.2478 ns</td><td>0.0461 ns</td><td>0.0408 ns</td><td>1.2531 ns</td>
+</tr><tr><td>S8_Copy</td><td>1</td><td>1.2168 ns</td><td>0.0497 ns</td><td>0.1220 ns</td><td>1.2447 ns</td>
+</tr><tr><td>S16_Ref</td><td>1</td><td>1.3348 ns</td><td>0.0522 ns</td><td>0.0994 ns</td><td>1.3218 ns</td>
+</tr><tr><td>S16_Copy</td><td>1</td><td>1.6568 ns</td><td>0.0557 ns</td><td>0.0851 ns</td><td>1.6319 ns</td>
+</tr><tr><td>S32_Ref</td><td>1</td><td>1.8567 ns</td><td>0.0585 ns</td><td>0.0719 ns</td><td>1.8613 ns</td>
+</tr><tr><td>S32_Copy</td><td>1</td><td>8.0122 ns</td><td>0.1950 ns</td><td>0.2321 ns</td><td>8.0000 ns</td>
+</tr><tr><td>S64_Ref</td><td>1</td><td>8.7725 ns</td><td>0.1851 ns</td><td>0.1818 ns</td><td>8.7776 ns</td>
+</tr><tr><td>S64_Copy</td><td>1</td><td>11.6646 ns</td><td>0.2593 ns</td><td>0.2774 ns</td><td>11.6219 ns</td>
+</tr><tr><td>S128_Ref</td><td>1</td><td>34.9170 ns</td><td>0.7298 ns</td><td>0.9230 ns</td><td>34.9387 ns</td>
+</tr><tr><td>S128_Copy</td><td>1</td><td>37.1547 ns</td><td>0.7609 ns</td><td>1.0158 ns</td><td>37.2136 ns</td>
+</tr><tr><td>S256_Ref</td><td>1</td><td>84.4599 ns</td><td>1.6194 ns</td><td>1.7327 ns</td><td>84.8172 ns</td>
+</tr><tr><td>S256_Copy</td><td>1</td><td>99.4094 ns</td><td>1.8399 ns</td><td>2.1903 ns</td><td>99.8644 ns</td>
+</tr><tr><td>S8M_Ref</td><td>1</td><td>1.6878 ns</td><td>0.0949 ns</td><td>0.2691 ns</td><td>1.8132 ns</td>
+</tr><tr><td>S8M_Copy</td><td>1</td><td>1.2471 ns</td><td>0.0533 ns</td><td>0.1367 ns</td><td>1.2097 ns</td>
+</tr><tr><td>S16M_Ref</td><td>1</td><td>1.5035 ns</td><td>0.0540 ns</td><td>0.1091 ns</td><td>1.5380 ns</td>
+</tr><tr><td>S16M_Copy</td><td>1</td><td>1.8362 ns</td><td>0.0442 ns</td><td>0.0413 ns</td><td>1.8450 ns</td>
+</tr><tr><td>S32M_Ref</td><td>1</td><td>1.9572 ns</td><td>0.0424 ns</td><td>0.0397 ns</td><td>1.9786 ns</td>
+</tr><tr><td>S32M_Copy</td><td>1</td><td>9.1730 ns</td><td>0.2069 ns</td><td>0.2967 ns</td><td>9.2289 ns</td>
+</tr><tr><td>S64M_Ref</td><td>1</td><td>8.8361 ns</td><td>0.2020 ns</td><td>0.2765 ns</td><td>8.7285 ns</td>
+</tr><tr><td>S64M_Copy</td><td>1</td><td>10.6393 ns</td><td>0.4728 ns</td><td>1.3792 ns</td><td>10.2773 ns</td>
+</tr><tr><td>S128M_Ref</td><td>1</td><td>35.5049 ns</td><td>0.7266 ns</td><td>1.6548 ns</td><td>35.4014 ns</td>
+</tr><tr><td>S128M_Copy</td><td>1</td><td>40.0029 ns</td><td>0.8200 ns</td><td>2.3919 ns</td><td>40.0449 ns</td>
+</tr><tr><td>S256M_Ref</td><td>1</td><td>87.3462 ns</td><td>1.7113 ns</td><td>2.1016 ns</td><td>87.3658 ns</td>
+</tr><tr><td>S256M_Copy</td><td>1</td><td>100.0590 ns</td><td>2.0221 ns</td><td>5.0732 ns</td><td>99.7387 ns</td>
+</tr><tr><td>S8_NoOp_Ref</td><td>1</td><td>1.5122 ns</td><td>0.0555 ns</td><td>0.1583 ns</td><td>1.4998 ns</td>
+</tr><tr><td>S8_NoOp_Copy</td><td>1</td><td>1.2190 ns</td><td>0.0489 ns</td><td>0.1314 ns</td><td>1.2179 ns</td>
+</tr><tr><td>S16_NoOp_Ref</td><td>1</td><td>1.4288 ns</td><td>0.0534 ns</td><td>0.1269 ns</td><td>1.4373 ns</td>
+</tr><tr><td>S16_NoOp_Copy</td><td>1</td><td>1.7141 ns</td><td>0.0593 ns</td><td>0.1433 ns</td><td>1.7278 ns</td>
+</tr><tr><td>S32_NoOp_Ref</td><td>1</td><td>0.9257 ns</td><td>0.0533 ns</td><td>0.0830 ns</td><td>0.9078 ns</td>
+</tr><tr><td>S32_NoOp_Copy</td><td>1</td><td>5.0439 ns</td><td>0.1305 ns</td><td>0.1553 ns</td><td>5.0185 ns</td>
+</tr><tr><td>S64_NoOp_Ref</td><td>1</td><td>5.6811 ns</td><td>0.1380 ns</td><td>0.1843 ns</td><td>5.6562 ns</td>
+</tr><tr><td>S64_NoOp_Copy</td><td>1</td><td>7.7134 ns</td><td>0.1718 ns</td><td>0.1435 ns</td><td>7.6813 ns</td>
+</tr><tr><td>S128_NoOp_Ref</td><td>1</td><td>34.9747 ns</td><td>0.7152 ns</td><td>1.0922 ns</td><td>34.8179 ns</td>
+</tr><tr><td>S128_NoOp_Copy</td><td>1</td><td>35.4445 ns</td><td>0.5727 ns</td><td>0.5077 ns</td><td>35.5595 ns</td>
+</tr><tr><td>S256_NoOp_Ref</td><td>1</td><td>83.5843 ns</td><td>1.6926 ns</td><td>2.8742 ns</td><td>83.6110 ns</td>
+</tr><tr><td>S256_NoOp_Copy</td><td>1</td><td>92.2094 ns</td><td>1.8759 ns</td><td>1.8424 ns</td><td>91.9991 ns</td>
+</tr><tr><td>S8_Ref</td><td>10</td><td>9.1479 ns</td><td>0.2193 ns</td><td>0.4226 ns</td><td>9.0310 ns</td>
+</tr><tr><td>S8_Copy</td><td>10</td><td>9.8214 ns</td><td>0.2200 ns</td><td>0.4874 ns</td><td>9.8501 ns</td>
+</tr><tr><td>S16_Ref</td><td>10</td><td>10.3576 ns</td><td>0.2961 ns</td><td>0.8304 ns</td><td>10.3927 ns</td>
+</tr><tr><td>S16_Copy</td><td>10</td><td>11.1612 ns</td><td>0.2487 ns</td><td>0.5764 ns</td><td>11.1411 ns</td>
+</tr><tr><td>S32_Ref</td><td>10</td><td>13.0727 ns</td><td>0.2870 ns</td><td>0.6478 ns</td><td>13.2573 ns</td>
+</tr><tr><td>S32_Copy</td><td>10</td><td>23.2438 ns</td><td>0.4989 ns</td><td>0.9492 ns</td><td>22.7505 ns</td>
+</tr><tr><td>S64_Ref</td><td>10</td><td>30.0954 ns</td><td>0.6243 ns</td><td>1.6225 ns</td><td>29.4404 ns</td>
+</tr><tr><td>S64_Copy</td><td>10</td><td>38.1535 ns</td><td>0.7831 ns</td><td>1.0719 ns</td><td>38.1615 ns</td>
+</tr><tr><td>S128_Ref</td><td>10</td><td>76.6855 ns</td><td>1.5466 ns</td><td>2.1170 ns</td><td>76.1863 ns</td>
+</tr><tr><td>S128_Copy</td><td>10</td><td>139.1309 ns</td><td>2.8576 ns</td><td>4.6951 ns</td><td>139.0838 ns</td>
+</tr><tr><td>S256_Ref</td><td>10</td><td>161.4068 ns</td><td>3.1982 ns</td><td>4.7868 ns</td><td>161.1105 ns</td>
+</tr><tr><td>S256_Copy</td><td>10</td><td>234.6898 ns</td><td>4.8173 ns</td><td>13.8218 ns</td><td>229.3188 ns</td>
+</tr><tr><td>S8M_Ref</td><td>10</td><td>9.4201 ns</td><td>0.2360 ns</td><td>0.6772 ns</td><td>9.2040 ns</td>
+</tr><tr><td>S8M_Copy</td><td>10</td><td>8.5331 ns</td><td>0.1669 ns</td><td>0.1394 ns</td><td>8.5501 ns</td>
+</tr><tr><td>S16M_Ref</td><td>10</td><td>9.6566 ns</td><td>0.2189 ns</td><td>0.5881 ns</td><td>9.5592 ns</td>
+</tr><tr><td>S16M_Copy</td><td>10</td><td>10.4050 ns</td><td>0.2432 ns</td><td>0.6057 ns</td><td>10.2660 ns</td>
+</tr><tr><td>S32M_Ref</td><td>10</td><td>13.4171 ns</td><td>0.4244 ns</td><td>1.1327 ns</td><td>13.3174 ns</td>
+</tr><tr><td>S32M_Copy</td><td>10</td><td>24.8927 ns</td><td>0.5139 ns</td><td>0.5047 ns</td><td>24.7719 ns</td>
+</tr><tr><td>S64M_Ref</td><td>10</td><td>30.1493 ns</td><td>0.6281 ns</td><td>1.5758 ns</td><td>30.0340 ns</td>
+</tr><tr><td>S64M_Copy</td><td>10</td><td>37.4488 ns</td><td>0.7657 ns</td><td>1.2580 ns</td><td>37.3445 ns</td>
+</tr><tr><td>S128M_Ref</td><td>10</td><td>75.4916 ns</td><td>1.5221 ns</td><td>2.3244 ns</td><td>74.6810 ns</td>
+</tr><tr><td>S128M_Copy</td><td>10</td><td>140.0343 ns</td><td>2.8163 ns</td><td>5.6245 ns</td><td>138.5700 ns</td>
+</tr><tr><td>S256M_Ref</td><td>10</td><td>164.2619 ns</td><td>3.2050 ns</td><td>3.8153 ns</td><td>165.7027 ns</td>
+</tr><tr><td>S256M_Copy</td><td>10</td><td>238.8467 ns</td><td>4.6973 ns</td><td>7.4504 ns</td><td>239.9604 ns</td>
+</tr><tr><td>S8_NoOp_Ref</td><td>10</td><td>11.8410 ns</td><td>0.2635 ns</td><td>0.3862 ns</td><td>11.9323 ns</td>
+</tr><tr><td>S8_NoOp_Copy</td><td>10</td><td>9.9866 ns</td><td>0.2256 ns</td><td>0.3307 ns</td><td>10.0754 ns</td>
+</tr><tr><td>S16_NoOp_Ref</td><td>10</td><td>9.9109 ns</td><td>0.2215 ns</td><td>0.4672 ns</td><td>10.0318 ns</td>
+</tr><tr><td>S16_NoOp_Copy</td><td>10</td><td>12.3660 ns</td><td>0.2714 ns</td><td>0.6127 ns</td><td>12.5105 ns</td>
+</tr><tr><td>S32_NoOp_Ref</td><td>10</td><td>10.9577 ns</td><td>0.2455 ns</td><td>0.6159 ns</td><td>11.0975 ns</td>
+</tr><tr><td>S32_NoOp_Copy</td><td>10</td><td>10.5236 ns</td><td>0.2340 ns</td><td>0.5037 ns</td><td>10.5068 ns</td>
+</tr><tr><td>S64_NoOp_Ref</td><td>10</td><td>11.6025 ns</td><td>0.2417 ns</td><td>0.4481 ns</td><td>11.5025 ns</td>
+</tr><tr><td>S64_NoOp_Copy</td><td>10</td><td>14.0477 ns</td><td>0.3062 ns</td><td>0.6591 ns</td><td>14.0473 ns</td>
+</tr><tr><td>S128_NoOp_Ref</td><td>10</td><td>42.8793 ns</td><td>0.8798 ns</td><td>1.4207 ns</td><td>42.7291 ns</td>
+</tr><tr><td>S128_NoOp_Copy</td><td>10</td><td>118.5255 ns</td><td>2.3585 ns</td><td>3.2283 ns</td><td>118.3125 ns</td>
+</tr><tr><td>S256_NoOp_Ref</td><td>10</td><td>90.9667 ns</td><td>1.6943 ns</td><td>2.7361 ns</td><td>90.1833 ns</td>
+</tr><tr><td>S256_NoOp_Copy</td><td>10</td><td>168.4987 ns</td><td>3.3808 ns</td><td>5.5547 ns</td><td>166.4391 ns</td>
+</tr><tr><td>S8_Ref</td><td>100</td><td>123.7307 ns</td><td>2.4944 ns</td><td>4.5611 ns</td><td>122.5931 ns</td>
+</tr><tr><td>S8_Copy</td><td>100</td><td>99.6940 ns</td><td>1.9671 ns</td><td>1.8400 ns</td><td>99.3699 ns</td>
+</tr><tr><td>S16_Ref</td><td>100</td><td>121.0835 ns</td><td>2.4535 ns</td><td>3.5964 ns</td><td>120.1992 ns</td>
+</tr><tr><td>S16_Copy</td><td>100</td><td>130.8148 ns</td><td>2.6301 ns</td><td>6.1995 ns</td><td>131.9581 ns</td>
+</tr><tr><td>S32_Ref</td><td>100</td><td>134.1458 ns</td><td>2.4749 ns</td><td>3.8532 ns</td><td>133.2410 ns</td>
+</tr><tr><td>S32_Copy</td><td>100</td><td>211.6290 ns</td><td>4.2367 ns</td><td>6.2101 ns</td><td>212.6834 ns</td>
+</tr><tr><td>S64_Ref</td><td>100</td><td>236.6538 ns</td><td>4.7551 ns</td><td>10.1335 ns</td><td>236.8428 ns</td>
+</tr><tr><td>S64_Copy</td><td>100</td><td>318.0881 ns</td><td>6.3721 ns</td><td>9.1386 ns</td><td>319.0555 ns</td>
+</tr><tr><td>S128_Ref</td><td>100</td><td>520.2533 ns</td><td>10.3654 ns</td><td>10.6445 ns</td><td>519.7556 ns</td>
+</tr><tr><td>S128_Copy</td><td>100</td><td>1,086.4029 ns</td><td>21.5682 ns</td><td>38.8919 ns</td><td>1,086.1990 ns</td>
+</tr><tr><td>S256_Ref</td><td>100</td><td>931.3086 ns</td><td>18.4962 ns</td><td>24.0503 ns</td><td>928.8284 ns</td>
+</tr><tr><td>S256_Copy</td><td>100</td><td>1,567.1490 ns</td><td>31.2069 ns</td><td>46.7090 ns</td><td>1,569.2972 ns</td>
+</tr><tr><td>S8M_Ref</td><td>100</td><td>120.3245 ns</td><td>2.2366 ns</td><td>4.5687 ns</td><td>118.4565 ns</td>
+</tr><tr><td>S8M_Copy</td><td>100</td><td>106.7858 ns</td><td>2.1591 ns</td><td>3.8378 ns</td><td>106.9989 ns</td>
+</tr><tr><td>S16M_Ref</td><td>100</td><td>100.0136 ns</td><td>2.0270 ns</td><td>4.6166 ns</td><td>99.3270 ns</td>
+</tr><tr><td>S16M_Copy</td><td>100</td><td>159.5389 ns</td><td>12.6935 ns</td><td>37.4271 ns</td><td>140.6712 ns</td>
+</tr><tr><td>S32M_Ref</td><td>100</td><td>193.7006 ns</td><td>14.8602 ns</td><td>43.8156 ns</td><td>185.9158 ns</td>
+</tr><tr><td>S32M_Copy</td><td>100</td><td>208.3926 ns</td><td>4.1914 ns</td><td>8.4668 ns</td><td>208.6577 ns</td>
+</tr><tr><td>S64M_Ref</td><td>100</td><td>228.5650 ns</td><td>4.4960 ns</td><td>6.9997 ns</td><td>226.9818 ns</td>
+</tr><tr><td>S64M_Copy</td><td>100</td><td>308.2747 ns</td><td>6.0039 ns</td><td>8.2183 ns</td><td>306.1588 ns</td>
+</tr><tr><td>S128M_Ref</td><td>100</td><td>527.6351 ns</td><td>10.5540 ns</td><td>20.8325 ns</td><td>525.8523 ns</td>
+</tr><tr><td>S128M_Copy</td><td>100</td><td>1,130.8020 ns</td><td>22.4571 ns</td><td>26.7336 ns</td><td>1,133.3684 ns</td>
+</tr><tr><td>S256M_Ref</td><td>100</td><td>957.5990 ns</td><td>18.7344 ns</td><td>33.7820 ns</td><td>961.7148 ns</td>
+</tr><tr><td>S256M_Copy</td><td>100</td><td>1,612.1806 ns</td><td>31.7321 ns</td><td>47.4951 ns</td><td>1,618.1856 ns</td>
+</tr><tr><td>S8_NoOp_Ref</td><td>100</td><td>106.9589 ns</td><td>3.9630 ns</td><td>11.0472 ns</td><td>104.4686 ns</td>
+</tr><tr><td>S8_NoOp_Copy</td><td>100</td><td>95.9664 ns</td><td>1.2352 ns</td><td>1.4225 ns</td><td>95.8060 ns</td>
+</tr><tr><td>S16_NoOp_Ref</td><td>100</td><td>120.8131 ns</td><td>2.4275 ns</td><td>4.6185 ns</td><td>120.2067 ns</td>
+</tr><tr><td>S16_NoOp_Copy</td><td>100</td><td>122.1586 ns</td><td>2.4350 ns</td><td>4.9742 ns</td><td>120.8012 ns</td>
+</tr><tr><td>S32_NoOp_Ref</td><td>100</td><td>111.9453 ns</td><td>3.8836 ns</td><td>11.1427 ns</td><td>109.0815 ns</td>
+</tr><tr><td>S32_NoOp_Copy</td><td>100</td><td>129.0271 ns</td><td>2.9113 ns</td><td>8.5383 ns</td><td>128.0166 ns</td>
+</tr><tr><td>S64_NoOp_Ref</td><td>100</td><td>108.2142 ns</td><td>2.4102 ns</td><td>6.7584 ns</td><td>108.2288 ns</td>
+</tr><tr><td>S64_NoOp_Copy</td><td>100</td><td>134.1763 ns</td><td>4.0334 ns</td><td>11.4422 ns</td><td>132.0759 ns</td>
+</tr><tr><td>S128_NoOp_Ref</td><td>100</td><td>151.7881 ns</td><td>2.9889 ns</td><td>3.5581 ns</td><td>151.3896 ns</td>
+</tr><tr><td>S128_NoOp_Copy</td><td>100</td><td>915.3010 ns</td><td>17.1522 ns</td><td>39.0643 ns</td><td>901.7821 ns</td>
+</tr><tr><td>S256_NoOp_Ref</td><td>100</td><td>198.8834 ns</td><td>3.9881 ns</td><td>6.3256 ns</td><td>197.8679 ns</td>
+</tr><tr><td>S256_NoOp_Copy</td><td>100</td><td>973.8922 ns</td><td>19.3207 ns</td><td>34.8392 ns</td><td>961.4166 ns</td>
+</tr><tr><td>S8_Ref</td><td>1000</td><td>940.5334 ns</td><td>18.8419 ns</td><td>38.9118 ns</td><td>928.0736 ns</td>
+</tr><tr><td>S8_Copy</td><td>1000</td><td>952.3764 ns</td><td>18.9051 ns</td><td>47.4293 ns</td><td>935.6081 ns</td>
+</tr><tr><td>S16_Ref</td><td>1000</td><td>969.2412 ns</td><td>19.1607 ns</td><td>47.0015 ns</td><td>974.1829 ns</td>
+</tr><tr><td>S16_Copy</td><td>1000</td><td>1,211.1630 ns</td><td>23.9250 ns</td><td>48.3297 ns</td><td>1,221.9329 ns</td>
+</tr><tr><td>S32_Ref</td><td>1000</td><td>1,628.6207 ns</td><td>109.9244 ns</td><td>324.1146 ns</td><td>1,448.6814 ns</td>
+</tr><tr><td>S32_Copy</td><td>1000</td><td>2,322.0547 ns</td><td>67.6142 ns</td><td>193.9979 ns</td><td>2,312.2517 ns</td>
+</tr><tr><td>S64_Ref</td><td>1000</td><td>2,125.6720 ns</td><td>41.1637 ns</td><td>34.3736 ns</td><td>2,126.8466 ns</td>
+</tr><tr><td>S64_Copy</td><td>1000</td><td>3,343.8467 ns</td><td>64.8696 ns</td><td>79.6657 ns</td><td>3,350.6981 ns</td>
+</tr><tr><td>S128_Ref</td><td>1000</td><td>5,269.1071 ns</td><td>103.5644 ns</td><td>191.9633 ns</td><td>5,348.6413 ns</td>
+</tr><tr><td>S128_Copy</td><td>1000</td><td>10,753.9286 ns</td><td>213.5022 ns</td><td>350.7902 ns</td><td>10,690.6250 ns</td>
+</tr><tr><td>S256_Ref</td><td>1000</td><td>8,925.1392 ns</td><td>177.8972 ns</td><td>504.6648 ns</td><td>8,781.2500 ns</td>
+</tr><tr><td>S256_Copy</td><td>1000</td><td>15,503.9981 ns</td><td>304.2869 ns</td><td>635.1600 ns</td><td>15,546.5144 ns</td>
+</tr><tr><td>S8M_Ref</td><td>1000</td><td>1,231.2426 ns</td><td>24.4471 ns</td><td>44.0832 ns</td><td>1,245.4392 ns</td>
+</tr><tr><td>S8M_Copy</td><td>1000</td><td>973.6589 ns</td><td>19.4085 ns</td><td>48.6921 ns</td><td>977.3390 ns</td>
+</tr><tr><td>S16M_Ref</td><td>1000</td><td>995.3325 ns</td><td>10.8562 ns</td><td>8.4758 ns</td><td>992.1394 ns</td>
+</tr><tr><td>S16M_Copy</td><td>1000</td><td>988.6894 ns</td><td>26.3489 ns</td><td>72.5726 ns</td><td>989.7092 ns</td>
+</tr><tr><td>S32M_Ref</td><td>1000</td><td>1,352.5001 ns</td><td>26.8725 ns</td><td>61.2023 ns</td><td>1,359.2056 ns</td>
+</tr><tr><td>S32M_Copy</td><td>1000</td><td>2,055.5721 ns</td><td>40.6892 ns</td><td>107.9020 ns</td><td>2,078.4024 ns</td>
+</tr><tr><td>S64M_Ref</td><td>1000</td><td>3,086.7897 ns</td><td>322.8578 ns</td><td>951.9534 ns</td><td>2,511.2231 ns</td>
+</tr><tr><td>S64M_Copy</td><td>1000</td><td>3,111.8841 ns</td><td>64.5696 ns</td><td>167.8249 ns</td><td>3,112.8270 ns</td>
+</tr><tr><td>S128M_Ref</td><td>1000</td><td>5,167.6246 ns</td><td>102.7533 ns</td><td>140.6499 ns</td><td>5,169.3892 ns</td>
+</tr><tr><td>S128M_Copy</td><td>1000</td><td>10,579.8099 ns</td><td>209.5370 ns</td><td>361.4411 ns</td><td>10,638.4722 ns</td>
+</tr><tr><td>S256M_Ref</td><td>1000</td><td>8,998.9517 ns</td><td>178.9538 ns</td><td>435.5982 ns</td><td>8,998.6111 ns</td>
+</tr><tr><td>S256M_Copy</td><td>1000</td><td>14,902.3538 ns</td><td>290.7955 ns</td><td>378.1163 ns</td><td>14,764.5433 ns</td>
+</tr><tr><td>S8_NoOp_Ref</td><td>1000</td><td>939.1053 ns</td><td>18.4315 ns</td><td>39.6757 ns</td><td>924.7081 ns</td>
+</tr><tr><td>S8_NoOp_Copy</td><td>1000</td><td>928.4692 ns</td><td>18.4851 ns</td><td>37.3409 ns</td><td>915.0510 ns</td>
+</tr><tr><td>S16_NoOp_Ref</td><td>1000</td><td>960.7989 ns</td><td>19.1255 ns</td><td>42.7769 ns</td><td>970.9734 ns</td>
+</tr><tr><td>S16_NoOp_Copy</td><td>1000</td><td>1,173.1115 ns</td><td>23.2577 ns</td><td>49.5642 ns</td><td>1,172.0588 ns</td>
+</tr><tr><td>S32_NoOp_Ref</td><td>1000</td><td>958.3480 ns</td><td>19.1102 ns</td><td>36.8189 ns</td><td>961.2481 ns</td>
+</tr><tr><td>S32_NoOp_Copy</td><td>1000</td><td>1,153.1063 ns</td><td>19.2608 ns</td><td>26.3644 ns</td><td>1,152.8667 ns</td>
+</tr><tr><td>S64_NoOp_Ref</td><td>1000</td><td>968.1915 ns</td><td>19.1636 ns</td><td>38.7114 ns</td><td>978.5396 ns</td>
+</tr><tr><td>S64_NoOp_Copy</td><td>1000</td><td>1,014.1999 ns</td><td>20.6961 ns</td><td>58.7115 ns</td><td>1,009.8133 ns</td>
+</tr><tr><td>S128_NoOp_Ref</td><td>1000</td><td>1,007.0538 ns</td><td>19.7096 ns</td><td>34.5198 ns</td><td>1,008.8488 ns</td>
+</tr><tr><td>S128_NoOp_Copy</td><td>1000</td><td>8,653.3282 ns</td><td>172.8532 ns</td><td>212.2792 ns</td><td>8,575.2571 ns</td>
+</tr><tr><td>S256_NoOp_Ref</td><td>1000</td><td>1,038.0990 ns</td><td>20.4927 ns</td><td>35.3490 ns</td><td>1,028.0100 ns</td>
+</tr><tr><td>S256_NoOp_Copy</td><td>1000</td><td>8,789.9808 ns</td><td>173.9440 ns</td><td>290.6213 ns</td><td>8,761.9243 ns</td>
+</tr></tbody></table>
+</body>
+</html>
